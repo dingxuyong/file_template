@@ -1,0 +1,86 @@
+[
+  {
+    "_id": "上传下载比例",
+    "_type": "visualization",
+    "_source": {
+      "title": "上传下载比例",
+      "visState": "{\"title\":\"上传下载比例\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"request_method\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"filebeat-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"_type:proxy-access AND NOT post AND NOT HEAD\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "上传数据量分布",
+    "_type": "visualization",
+    "_source": {
+      "title": "上传数据量分布",
+      "visState": "{\"title\":\"上传数据量分布\",\"type\":\"pie\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"isDonut\":false,\"shareYAxis\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"bytes_recvd\"}},{\"id\":\"2\",\"type\":\"range\",\"schema\":\"segment\",\"params\":{\"field\":\"bytes_recvd\",\"ranges\":[{\"from\":1,\"to\":1024},{\"from\":1024,\"to\":102400},{\"from\":102400,\"to\":10485760},{\"from\":10485760,\"to\":524288000},{\"from\":524288000,\"to\":5368709120},{\"from\":5368709120}]}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[],\"index\":\"filebeat-*\",\"query\":{\"query_string\":{\"query\":\"_type:proxy-access\",\"analyze_wildcard\":true}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "下载数据量分布",
+    "_type": "visualization",
+    "_source": {
+      "title": "下载数据量分布",
+      "visState": "{\"title\":\"下载数据量分布\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"bytes_sent\"}},{\"id\":\"2\",\"type\":\"range\",\"schema\":\"segment\",\"params\":{\"field\":\"bytes_sent\",\"ranges\":[{\"from\":1,\"to\":1024},{\"from\":1024,\"to\":102400},{\"from\":102400,\"to\":10485760},{\"from\":10485760,\"to\":524288000},{\"from\":524288000,\"to\":5368709120},{\"from\":5368709120}]}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[],\"index\":\"filebeat-*\",\"query\":{\"query_string\":{\"query\":\"_type:proxy-access\",\"analyze_wildcard\":true}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "导航菜单(RT)",
+    "_type": "visualization",
+    "_source": {
+      "title": "导航菜单(RT)",
+      "visState": "{\"title\":\"导航菜单(RT)\",\"type\":\"markdown\",\"params\":{\"markdown\":\"## &nbsp;&nbsp;&nbsp;时间:##\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[实时](/#/dashboard/ClusterInfolastRealTime?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去15分钟](/#/dashboard/ClusterInfolast15min?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去30分钟](/#/dashboard/ClusterInfolast30min?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去1小时](/#/dashboard/ClusterInfolast1hour?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去4小时](/#/dashboard/ClusterInfolast4hour?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去12小时](/#/dashboard/ClusterInfolast12hour?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去24小时](/#/dashboard/ClusterInfolast1day?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去1星期](/#/dashboard/ClusterInfolast1week?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去1个月](/#/dashboard/ClusterInfolast1month?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去2个月](/#/dashboard/ClusterInfolast60day?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去3个月](/#/dashboard/ClusterInfolast90day?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去6个月](/#/dashboard/ClusterInfolast6month?embed=true)\\n\\n#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[过去1年](/#/dashboard/ClusterInfolast1year?embed=true)\"},\"aggs\":[],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "请求响应时间",
+    "_type": "visualization",
+    "_source": {
+      "title": "请求响应时间",
+      "visState": "{\"title\":\"请求响应时间\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"range\",\"schema\":\"segment\",\"params\":{\"field\":\"request_time\",\"ranges\":[{\"from\":0.001,\"to\":0.02},{\"from\":0.02,\"to\":0.05},{\"from\":0.05,\"to\":0.1},{\"from\":0.1,\"to\":0.2},{\"from\":0.2,\"to\":0.3},{\"from\":0.3,\"to\":0.5},{\"from\":0.5,\"to\":1},{\"from\":1,\"to\":5},{\"from\":5}]}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"filebeat-*\",\"query\":{\"query_string\":{\"query\":\"_type:proxy-access\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "高频访问IP",
+    "_type": "visualization",
+    "_source": {
+      "title": "高频访问IP",
+      "visState": "{\"title\":\"高频访问IP\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"client_ip\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"filebeat-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"_type:proxy-access AND NOT head\"}},\"filter\":[]}"
+      }
+    }
+  }
+]

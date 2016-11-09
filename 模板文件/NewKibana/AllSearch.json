@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "存储日志",
+    "_type": "search",
+    "_source": {
+      "title": "存储日志",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "beat.name",
+        "swift_service",
+        "storage_message"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"filebeat-*\",\"query\":{\"query_string\":{\"query\":\"_type:storage-access\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "访问日志",
+    "_type": "search",
+    "_source": {
+      "title": "访问日志",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_type",
+        "beat.hostname",
+        "bytes_recvd",
+        "bytes_sent",
+        "client_ip",
+        "request_method",
+        "request_time"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"filebeat-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"_type:proxy-access\"}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  }
+]
